@@ -1,0 +1,198 @@
+<div class="card">
+    <div class="card-header">
+    Simuler un credit
+</div>
+<div class="card-body">
+
+    <form (ngSubmit)="onSubmit()">
+        <div class="row g-3">
+        <div class="col-md-4">
+            <label class="form-label">Montant emprunte (DT)</label>
+            <input type="number" class="form-control" [(ngModel)]="montant"
+                name="montant" min="1000" step="1000"
+                placeholder="Ex: 100000" required>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Duree (mois)</label>
+            <input type="number" class="form-control" [(ngModel)]="dureeMois"
+                name="dureeMois" min="6" max="360"
+                placeholder="Ex: 60" required>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Taux annuel (%)</label>
+            <input type="number" class="form-control" [(ngModel)]="tauxAnnuel"
+                name="tauxAnnuel" min="0.1" max="20" step="0.1"
+                placeholder="Ex: 5.5" required>
+        </div>
+    </div>
+    <div class="actions-section">
+        <button type="submit" class="btn-bna" [disabled]="loading">
+        {{ loading ? 'Calcul en cours...' : 'SIMULER LE CREDIT' }}
+        </button>
+        <button type="button" class="btn-bna-outline" (click)="reinitialiser()">
+        TOUT EFFACER
+        </button>
+        <button type="button" class="btn-bna-outline" (click)="chargerHistorique()">
+        HISTORIQUE
+        </button>
+    </div>
+    </form>
+
+    <div *ngIf="error" class="alert alert-danger mt-4">{{ error }}</div>
+
+    
+    <div *ngIf="resultat" class="mt-5">
+        <h5 style="color: #1B9E85; font-weight: 800; margin-bottom: 1rem;border-bottom: 2px solid #E8F5F2;padding-bottom: 1rem;">
+        Resultats de la simulation
+    </h5>
+
+    <div class="row g-3">
+        <div class="col-md-4">
+        <div class="result-card result-card-green">
+            <h6> Mensualite</h6>
+            <h3>{{ resultat.mensualite | number:'1.2-2' }} DT</h3>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="result-card result-card-light">
+            <h6> Cout total du credit</h6>
+            <h3>{{ resultat.coutTotal | number:'1.2-2' }} DT</h3>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="result-card result-card-gray">
+            <h6> Total des interets</h6>
+            <h3>{{ resultat.interetsTotaux | number:'1.2-2' }} DT</h3>
+        </div>
+        </div>
+    </div>
+
+    <div class="recap-box">
+        <h5 style="color: #1B9E85; font-weight: 800; margin-bottom: 1.5rem; font-weight: 800; margin-bottom: 1rem;border-bottom: 2px solid #E8F5F2;padding-bottom: 1rem;">Recapitulatif detaille du credit</h5>
+
+        <table class="recap-table">
+        <tbody>
+            <tr>
+                <td><strong>Capital emprunte</strong></td>
+                <td class="text-end">{{ capitalEmprunte | number:'1.2-2' }} DT</td>
+            </tr>
+            <tr>
+                <td><strong>Duree du credit</strong></td>
+                <td class="text-end">{{ dureeAffichee }} mois ({{ dureeEnAnnees | number:'1.1-1' }} ans)</td>
+            </tr>
+            <tr>
+                <td><strong>Taux annuel</strong></td>
+                <td class="text-end">{{ tauxAffiche }} %</td>
+            </tr>
+            <tr>
+                <td><strong>Mensualite</strong></td>
+                <td class="text-end">{{ resultat.mensualite | number:'1.2-2' }} DT</td>
+            </tr>
+            <tr class="recap-separator">
+                <td colspan="2"></td>
+            </tr>
+            <tr class="recap-highlight-green">
+                <td><strong> COUT TOTAL DU CREDIT</strong></td>
+                <td class="text-end"><strong>{{ resultat.coutTotal | number:'1.2-2' }} DT</strong></td>
+            </tr>
+            <tr class="recap-highlight-gray">
+                <td><strong> TOTAL DES INTERETS</strong></td>
+                <td class="text-end"><strong>{{ resultat.interetsTotaux | number:'1.2-2' }} DT</strong></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="recap-note">
+                Le cout total = Capital + Interets. Les interets representent
+                <strong>{{ pourcentageInterets | number:'1.2-2' }} %</strong>
+                du capital emprunte.
+            </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <div class="mt-5">
+        <div class="history-header">
+    <h5 style="color: #1B9E85; font-weight: 800; margin-bottom: 1.5rem; font-weight: 800; margin-bottom: 1rem;padding-bottom: 1rem;">
+        Tableau d'amortissement
+    </h5>
+    <div>
+        <button type="button"
+            class="btn-export-csv"
+            (click)="exporterCSV()">
+        📥 EXPORTER EN CSV
+    </button>
+    <button type="button"
+            class="btn-export-pdf"
+            (click)="exporterPDF()">
+        📄 EXPORTER EN PDF
+    </button>
+    </div>
+</div>
+        <div class="table-responsive" style="max-height:300px;overflow-y:auto; border: 1px solid #e0e6ed; border-radius: 8px;">
+        <table class="table-bna">
+            <thead>
+            <tr>
+                <th>Mois</th>
+                <th style="text-align:right;">Part Capital</th>
+                <th style="text-align:right;">Part Interet</th>
+                <th style="text-align:right;">Capital Restant</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ligne of resultat.lignes">
+                <td><strong>{{ ligne.mois }}</strong></td>
+                <td style="text-align:right;">{{ ligne.partCapital | number:'1.2-2' }} DT</td>
+                <td style="text-align:right;">{{ ligne.partInteret | number:'1.2-2' }} DT</td>
+                <td style="text-align:right;">{{ ligne.capitalRestant | number:'1.2-2' }} DT</td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    </div>
+
+<div *ngIf="afficherHistorique" class="history-section">
+        <div class="history-header">
+        <h5 style="color: #1B9E85; font-weight: 800;;padding-bottom: 2rem;">
+        Historique des simulations
+        </h5>
+        <button *ngIf="historique.length > 0"
+                type="button"
+                class="btn-delete-history"
+                (click)="supprimerHistorique()">
+        VIDER L'HISTORIQUE
+        </button>
+    </div>
+
+      <div *ngIf="historique.length === 0" class="alert" style="background:#E8F5F2; border-left:4px solid #1B9E85; color:#15806B;">
+        Aucune simulation enregistree pour le moment.
+    </div>
+
+      <div *ngIf="historique.length > 0" class="table-responsive" style="border: 1px solid #e0e6ed; border-radius: 8px;">
+        <table class="table-bna">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Montant</th>
+                <th>Duree</th>
+                <th>Taux</th>
+                <th style="text-align:right;">Mensualite</th>
+                <th style="text-align:right;">Cout total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of historique; let i = index">
+                <td><strong>{{ i + 1 }}</strong></td>
+                <td>{{ item.montant | number:'1.0-0' }} DT</td>
+                <td>{{ item.dureeMois }} mois</td>
+                <td>{{ item.tauxAnnuel }} %</td>
+                <td style="text-align:right;">{{ item.mensualite | number:'1.2-2' }} DT</td>
+                <td style="text-align:right;">{{ item.coutTotal | number:'1.2-2' }} DT</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+
+</div>
+</div>

@@ -1,0 +1,9 @@
+tn\bna\backendsimulateur\repository\CreditSimulationRepository.class
+tn\bna\backendsimulateur\service\CreditService.class
+tn\bna\backendsimulateur\entity\CreditSimulation.class
+tn\bna\backendsimulateur\dto\AmortissementDto.class
+tn\bna\backendsimulateur\BackendSimulateurApplication.class
+tn\bna\backendsimulateur\dto\LigneAmortissementDto.class
+tn\bna\backendsimulateur\config\CorsConfig.class
+tn\bna\backendsimulateur\dto\CreditSimulationRequest.class
+tn\bna\backendsimulateur\controller\CreditController.class

@@ -1,0 +1,9 @@
+C:\Users\user\mon-projet-stage\backend-simulateur\src\main\java\tn\bna\backendsimulateur\BackendSimulateurApplication.java
+C:\Users\user\mon-projet-stage\backend-simulateur\src\main\java\tn\bna\backendsimulateur\config\CorsConfig.java
+C:\Users\user\mon-projet-stage\backend-simulateur\src\main\java\tn\bna\backendsimulateur\controller\CreditController.java
+C:\Users\user\mon-projet-stage\backend-simulateur\src\main\java\tn\bna\backendsimulateur\dto\AmortissementDto.java
+C:\Users\user\mon-projet-stage\backend-simulateur\src\main\java\tn\bna\backendsimulateur\dto\CreditSimulationRequest.java
+C:\Users\user\mon-projet-stage\backend-simulateur\src\main\java\tn\bna\backendsimulateur\dto\LigneAmortissementDto.java
+C:\Users\user\mon-projet-stage\backend-simulateur\src\main\java\tn\bna\backendsimulateur\entity\CreditSimulation.java
+C:\Users\user\mon-projet-stage\backend-simulateur\src\main\java\tn\bna\backendsimulateur\repository\CreditSimulationRepository.java
+C:\Users\user\mon-projet-stage\backend-simulateur\src\main\java\tn\bna\backendsimulateur\service\CreditService.java

@@ -1,0 +1,332 @@
+.card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(27, 158, 133, 0.08);
+}
+
+.card-header {
+    background: linear-gradient(135deg, #1B9E85 0%, #15806B 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.card-body {
+    padding: 2rem 1.5rem;
+}
+
+.form-label {
+    color: #5A5A5A;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.form-control {
+    border: 2px solid #e0e6ed;
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+.form-control:focus {
+    border-color: #1B9E85;
+    box-shadow: 0 0 0 0.2rem rgba(27, 158, 133, 0.15);
+    outline: none;
+}
+
+.row.g-3 > div {
+    margin-bottom: 0.75rem;
+}
+
+.actions-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e0e6ed;
+}
+
+.btn-bna {
+    background: #1B9E85;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-bna:hover:not(:disabled) {
+    background: #15806B;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(27, 158, 133, 0.3);
+}
+
+.btn-bna:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-bna-outline {
+    background: transparent;
+    color: #1B9E85;
+    border: 2px solid #1B9E85;
+    padding: 0.65rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 0.95rem;
+    margin-left: 0.75rem;
+}
+
+.btn-bna-outline:hover {
+    background: #1B9E85;
+    color: white;
+}
+
+.result-card {
+    border-radius: 8px;
+    padding: 1.5rem;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.result-card-green {
+    background: linear-gradient(135deg, #1B9E85 0%, #15806B 100%);
+}
+
+.result-card-gray {
+    background: linear-gradient(135deg, #5A5A5A 0%, #3d3d3d 100%);
+}
+
+.result-card-light {
+    background: linear-gradient(135deg, #6cbfae 0%, #1B9E85 100%);
+}
+
+.result-card h6 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    margin-top: 0;
+}
+
+.result-card h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.table-bna {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.table-bna thead {
+    background: #1B9E85;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.table-bna th {
+    padding: 0.9rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table-bna td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 0.95rem;
+}
+
+.table-bna tbody tr:hover {
+    background: #E8F5F2;
+}
+
+.table-bna tbody tr:nth-child(even) {
+    background: #fbfcfd;
+}
+
+.alert {
+    border-radius: 6px;
+    border-left: 4px solid;
+    padding: 1rem;
+}
+
+.alert-danger {
+    background: #fdf2f2;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+.table-responsive::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #1B9E85;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #15806B;
+}
+
+.recap-box {
+    margin-top: 0.3rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border: 2px solid #E8F5F2;
+    box-shadow: 0 2px 8px rgba(27, 158, 133, 0.08);
+}
+
+
+.recap-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.recap-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+}
+
+.recap-table tr:last-child td {
+    border-bottom: none;
+}
+
+.recap-separator td {
+    padding: 0.5rem 0;
+    border-bottom: 2px solid #1B9E85;
+}
+
+.recap-highlight-green {
+    background: #E8F5F2;
+}
+
+.recap-highlight-green td {
+    color: #15806B;
+    font-size: 1.05rem;
+    padding: 1rem;
+}
+
+.recap-highlight-gray {
+    background: #f4f6f9;
+}
+
+.recap-highlight-gray td {
+    color: #5A5A5A;
+    font-size: 1.05rem;
+    padding: 1rem;
+}
+
+.recap-note {
+    background: #fef9e7;
+    color: #7d6608;
+    font-size: 0.85rem;
+    font-style: italic;
+    padding: 1rem;
+    border-radius: 4px;
+    border-left: 4px solid #f1c40f;
+}
+
+.text-end {
+    text-align: right;
+}
+
+.btn-delete-history {
+    background: transparent;
+    color: #dc3545;
+    border: 2px solid #dc3545;
+    padding: 0.6rem 1.5rem;
+    border-radius: 3px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-delete-history:hover {
+    background: #dc3545;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #E8F5F2;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.btn-export-csv {
+    background: transparent;
+    color: #1B9E85;
+    border: 2px solid #1B9E85;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-export-csv:hover {
+    background: #1B9E85;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(27, 158, 133, 0.3);
+}
+/* Bouton d'export PDF */
+.btn-export-pdf {
+    background: transparent;
+    color: #0b0a0a;
+    border: 2px solid #1a1717;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    margin-left: 0.5rem;
+}
+
+.btn-export-pdf:hover {
+    background: #0f0f0e;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
